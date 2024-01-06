@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempo na sua Cidade</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <p id="header">CLIMAGORA</p>
+            <div>
+            <input type="text" name="cidade" id="input-cidade" placeholder="Digite o nome da sua cidade">
+            <ul id="resultado-busca">
+            </ul>
+            </div>
+            <img id="logo" src="./assets/logo.svg" alt="">
+        </header>
+
+        <section id="conteudo">
+            <div>
+                <h1>Tempo agora</h1>
+            </div>
+
+            <h2 id="cidade">Terra do Nunca</h2>
+            <p id="descricao">Tempo aberto</p>
+            
+            <div class="alinhar">
+                <ul>
+                    <li class="titulo">Temperatura</li>
+                    <li class="resultado" id="temp-princ">49° graus</li>
+                </ul>
+                <ul>
+                    <li class="titulo">Sensação termica</li>
+                    <li class="resultado" id="sensacao">52° graus</li>
+                </ul>
+
+                <div>
+                    <ul id="maxmin">
+                        <li class="titulo">Tempo Máximo e Mínimo</li>
+                        <div class="alinhar-icones"> 
+                            <img src="./assets/seta-quente.svg" alt=""><li class="resultado" id="temp-max"> 85° graus</li>
+                            <img src="./assets/seta-frio.svg" alt=""><li class="resultado" id="temp-min"> 19° graus</li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            
+        </section>
+
+        
+
+    </main>
+
+    <div id="fundo-busca"></div>
+
+    <script src="./js/script.js"></script>
+</body>
+</html>
