@@ -2,7 +2,10 @@ const tempMax = document.getElementById('temp-max')
 const tempMin = document.getElementById('temp-min')
 const sensacao = document.getElementById('sensacao')
 const tempo = document.getElementById('temp-princ')
-const descricao = document.getElementById('descricao')
+
+const foto = document.getElementById('foto-clima')
+
+
 
 const cidade = document.getElementById('cidade')
 
@@ -32,11 +35,28 @@ function buscarCidade(cityName){
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${API}`)
         .then(bruto => bruto.json())
         .then(result => {
-            result.map(itens => {
-                atualizarPesquisa(itens.name, itens.state, itens.lat, itens.lon)
-            })
+            if(result.length === 0){
+                atualizarVazio(cityName)
+            }else{
+                result.map(itens => {
+                    atualizarPesquisa(itens.name, itens.state, itens.lat, itens.lon)
+                        })
+            }
         })
 } 
+
+function atualizarVazio(escrito){
+    const li = document.createElement('li')
+
+    li.setAttribute('Id', 'nao-existe')
+
+    li.innerHTML = `
+        <p>A cidade ${escrito} não foi encontrada</p>
+    `
+    ul.appendChild(li)
+
+    fundo.style.display = "flex"
+}
 
 function atualizarPesquisa(cid, estad, lat, lon){
     
@@ -69,17 +89,23 @@ function buscarDadosTempo(lat, lon, cid){
     fundo.style.display = "none"
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API}&units=metric`)
-        .then(bruto => bruto.json())
+        .then(bruto => {
+            if(!bruto.ok){
+                throw new Error(`Erro na solicitação à API. Código de status: ${bruto.status}`)
+            }
+            return bruto.json()
+        })      
         .then(result => {
             
             tempo.innerText = `${result.main.temp.toFixed(0)}° Graus`
             sensacao.innerText = `${result.main.feels_like.toFixed(0)}° Graus`
             tempMax.innerText = `${result.main.temp_max.toFixed(0)}° Graus`
             tempMin.innerText = `${result.main.temp_min.toFixed(0)}° Graus`
-            descricao.innerText = `${result.weather[0].main}`
+            foto.setAttribute('src', `https://openweathermap.org/img/wn/${result.weather[0].icon}.png`)
 
             cidade.innerText = cid
         })
+        .catch(err => console.error('algo deu errado: ' + err.message))
 }
 
 

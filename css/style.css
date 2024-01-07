@@ -59,6 +59,13 @@ header{
     cursor: pointer;
 }
 
+#nao-existe{
+    background: white;
+    padding: 15px 25px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
 .lista-cidades:hover{
     background-color: #AEAEAE;
     color: white;
@@ -85,6 +92,7 @@ header{
     width: auto;
 
     text-align: center;
+    align-items: center;
     background: white;
     flex: 1;
     padding: 45px 120px;
@@ -93,6 +101,11 @@ header{
 h1{
     font-size: 40px;
     font-weight: 900;
+}
+
+#foto-clima{
+    width: 40px;
+    height: 40px;
 }
 
 h2{
@@ -110,7 +123,7 @@ h2{
 }
 
 .titulo{
-    font-size: 23px;
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -120,8 +133,10 @@ h2{
 
 
 .alinhar{
+    margin-top: 25px;
     display: flex;
-    gap: 15px;
+    gap: 35px;
+    align-items: center;
 }
 
 .alinhar-icones{
@@ -140,14 +155,11 @@ h2{
 
 
 @media screen and (max-width: 800px){
-    h2{
-        padding-top: 25px;
-    }
     .alinhar{
         flex-direction: column;
-        gap: 35px;
+        gap: 15px;
         align-items: center;
-        margin-top: 15px;
+        margin-top: 25px;
     }
 
     #input-cidade{
@@ -189,5 +201,17 @@ h2{
 @media screen and (max-width: 490px){
     #conteudo{
         padding: 45px 25px;
+    }
+}
+
+@media screen and (max-width: 400px){
+
+
+    #input-cidade{
+        width: 180px;
+    }
+    #resultado-busca{
+        width: 180px;
+    
     }
 }
