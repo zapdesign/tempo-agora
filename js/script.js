@@ -29,7 +29,7 @@ fundo.addEventListener('click', () => {
 // Buscar cidades
 function buscarCidade(cityName){
     let API = "b56b8b0245bb40c8dcd1ca9721f9213f"
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${API}`)
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${API}`)
         .then(bruto => bruto.json())
         .then(result => {
             result.map(itens => {
